@@ -1,4 +1,4 @@
-/*#include <stdio.h>
+#include <stdio.h>
 #include <locale.h>
 #include <iostream>
 #include <fstream>
@@ -6,7 +6,7 @@
 #define N 5
 using namespace std;
 
-int file (int a[N][N])
+int file (int a[N][N]) // Ввод данных с файла
 {
 	ifstream in("D:\\in.txt");
 
@@ -24,7 +24,7 @@ int file (int a[N][N])
 	return a[N][N];
 }
 
-int klava(int a[N][N])
+int klava(int a[N][N]) // Ввод данных с клавиатуры
 {
 	for (int i = 0; i < N; i++)
 	{
@@ -37,20 +37,23 @@ int klava(int a[N][N])
 	return a[N][N];
 }
 
-int reshenie(int a[N][N],int x[N], int m)
+int reshenie(int a[N][N],int x[N], int m) // Решение поставленной задачи
 {
 	for (int j = 0; j < N; j++)
 	{
 		for (int i = 0; i < N; i++)
 		{
-			if ((a[i][j] + 1 == a[i + 1][j]) and (a[i + 1][j] + 1 == a[i + 2][j]))
+			if ((a[i][j] < a[i + 1][j]) and (a[i + 1][j] < a[i + 2][j]))
+			{
 				x[j] = 1;
+				break;
+			}
 		}
 	}
 	return x[N];
 }
 
-void vivod(int a[N][N], int x[N], int i, int j, int y)
+void vivod(int a[N][N], int x[N], int i, int j, int y) // Вывод изначальной матрицы и конечного массива x
 {
 	printf("Массив a:\n");
 	for (i = 0; i < N; i++)
@@ -71,7 +74,7 @@ void vivod(int a[N][N], int x[N], int i, int j, int y)
 	}
 }
 	
-	void vvodY(int y,int x[N],int i,int j)
+	void vvodY(int y,int x[N],int i,int j) // Нахождение значения y
 	{
 		for (i = 0; i < N; i++)
 		{
@@ -98,7 +101,7 @@ void vivod(int a[N][N], int x[N], int i, int j, int y)
 	}
 
 
-void prog()
+void prog() // Программа со всем ф-ями
 {
 	int p, i = 0, j = 0, m = 0, a[N][N], x[N] = { 0,0,0,0,0 }, y = 0;
 	setlocale(LC_CTYPE, "");
@@ -121,4 +124,4 @@ void prog()
 int main(void)
 {
 	prog();
-}*/
+}
